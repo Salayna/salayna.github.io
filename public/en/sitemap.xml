@@ -2,31 +2,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/en/footer/</loc>
+    <loc>http://localhost:1313/en/footer/</loc>
     
     </url>
   <url>
-    <loc>http://localhost:1313/en/en/slide/</loc>
-    
-    </url>
-  <url>
-    <loc>http://localhost:1313/en/en/</loc>
-    
-    </url>
-  <url>
-    <loc>http://localhost:1313/en/categories/</loc>
+    <loc>http://localhost:1313/en/slide/</loc>
     
     </url>
   <url>
     <loc>http://localhost:1313/en/</loc>
-    
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
     </url>
   <url>
-    <loc>http://localhost:1313/en/en/pin/</loc>
-    
+    <loc>http://localhost:1313/en/tags/authoring/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/categories/authoring/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/posts/my-first-post/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/categories/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/tags/history/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/posts/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/tags/redaction/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
     </url>
   <url>
     <loc>http://localhost:1313/en/tags/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/tags/configuration/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/categories/configuration/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/posts/configure_discussion/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/tags/discussion/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/en/pin/</loc>
     
     </url>
 </urlset>

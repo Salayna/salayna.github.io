@@ -1,6 +1,6 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://salayna.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Sachi'
 theme = "hugo-brewm"
 
 canonifyURLs = true

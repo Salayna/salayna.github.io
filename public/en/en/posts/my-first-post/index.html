@@ -6,13 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pin | Sachi</title>
+    <title>Authoring The Redaction History | Sachi</title>
     <meta name="author" content="">
-    <meta name="description" content="This is a slide with {{&lt; pin &gt;}} shortcode.
-Pin it as Showcase (Example) Section with Pin shortcode. The item order is column-based. If images are not square, the layout will displayed as masonry style.
-Item 1 Item 2 Item 3 Item 4 Item 5 Item 6 Pin it as Catalogue (Example) {{&lt; pin &gt;}} shortcode with quote parameter.
-$299 $199 $399 $299 Get Quote $299 $199 $399 $299 Out of stock " >
-    <link rel="canonical" href="http://localhost:1313/en/en/pin/" >
+    <meta name="description" content="How to set up the redaction history in Hugo Brewm theme" >
+    <meta name="keywords" content="authoring,redaction,history" >
+    <link rel="canonical" href="http://localhost:1313/en/en/posts/my-first-post/" >
     
     
     <!-- js.html -->
@@ -20,10 +18,12 @@ $299 $199 $399 $299 Get Quote $299 $199 $399 $299 Out of stock " >
     <link rel="stylesheet" href="http://localhost:1313/css/hugo-brewm.min.css">
     <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
     
+        
+        <link href="http://localhost:1313/css/typesetting/verbatim.min.css" rel="stylesheet" type="text/css">
     <!-- js/fediverse.html -->
     
 </head>
-<body  id="slide" >
+<body  id="post" >
     <!-- header.html -->
 <header class="pagewidth">
     <div id="background-header" class="background" aria-hidden="true"></div>
@@ -93,8 +93,12 @@ $299 $199 $399 $299 Get Quote $299 $199 $399 $299 Out of stock " >
             <a href="http://localhost:1313/en/en/" aria-current="true">
             </a>
         </li>
+        <li>
+            <a href="http://localhost:1313/en/en/posts/" aria-current="true">Post
+            </a>
+        </li>
     <li>
-        <a href="" aria-current="page" tabindex="-1">Pin
+        <a href="" aria-current="page" tabindex="-1">Authoring The Redaction History
         </a>
     </li>
             </ul>
@@ -107,143 +111,100 @@ $299 $199 $399 $299 Get Quote $299 $199 $399 $299 Out of stock " >
         
     <article id="main-article" class="pagewidth"
         role="document" aria-labelledby="title"
-            data-pagefind-ignore="all">
+            data-pagefind-body>
         
         <header class="textwidth" aria-labelledby="title">
             <!-- title.html -->
-        <h1 id="title"
-            data-bionRead-safe
-            >Pin</h1>
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >Authoring The Redaction History</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">How to set up the redaction history in Hugo Brewm theme</p>
+        </hgroup>
             <div id="doc-author" class="textsw author">
                 
             </div>
             <!-- timestamp.html-->
     <div >
-        <time class="doc-publish-date" datetime="0001-01-01T00:00:00&#43;00:00" data-time-label="Published on">January 1, 1</time>
+        <time class="doc-publish-date" datetime="2025-02-03T00:00:00&#43;00:00" data-time-label="Published on">February 3, 2025</time>
     </div>
         </header>
         <!-- audio.html -->
         <section aria-labelledby="Title" id="content" data-bionRead-safe>
-                <p>This is a slide with <code>{{&lt; pin &gt;}}</code> shortcode.</p>
-<h2 id="pin-it-as-showcase-example">Pin it as Showcase (Example)</h2>
-<p>Section with <code>Pin</code> shortcode.
-The item order is column-based.
-If images are not square, the layout will displayed as masonry style.</p>
-<p><div class="column pin">
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/1.svg" alt="Item 1" loading="lazy">
-                <figcaption>
-                    Item 1
-                </figcaption>
-        </figure>
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/2.svg" alt="Item 2" loading="lazy">
-                <figcaption>
-                    Item 2
-                </figcaption>
-        </figure>
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/3.svg" alt="Item 3" loading="lazy">
-                <figcaption>
-                    Item 3
-                </figcaption>
-        </figure>
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/4.svg" alt="Item 4" loading="lazy">
-                <figcaption>
-                    Item 4
-                </figcaption>
-        </figure>
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/5.svg" alt="Item 5" loading="lazy">
-                <figcaption>
-                    Item 5
-                </figcaption>
-        </figure>
-
-
-        <figure>
-            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/6.svg" alt="Item 6" loading="lazy">
-                <figcaption>
-                    Item 6
-                </figcaption>
-        </figure>
-
-</div></p>
-<h2 id="pin-it-as-catalogue-example">Pin it as Catalogue (Example)</h2>
-<p><code>{{&lt; pin &gt;}}</code> shortcode with <code>quote</code> parameter.</p>
-<p><div class="column pin">
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 1">
-            <div><s>$299</s> $199</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/7.svg" alt="Item 1" loading="lazy">
-        </a>
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 2">
-            <div><s>$399</s> $299</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/8.svg" alt="Item 2" loading="lazy">
-        </a>
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 3">
-            <div>Get Quote</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/9.svg" alt="Item 3" loading="lazy">
-        </a>
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 4">
-            <div><s>$299</s> $199</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/10.svg" alt="Item 4" loading="lazy">
-        </a>
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 5">
-            <div><s>$399</s> $299</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/11.svg" alt="Item 5" loading="lazy">
-        </a>
-
-
-        <a href="#my-ecommerce" class="has-img has-aria-label has-quote"
-             aria-label="Item 6">
-            <div>Out of stock</div>
-             <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/12.svg" alt="Item 6" loading="lazy">
-        </a>
-
-</div></p>
+                <p>The redaction history functionality enables you to track and communicate content modifications to readers.
+Within the post&rsquo;s front matter, you can specify details such as <code>editor</code>, <code>reviewer</code>, and include explanatory notes (<code>note</code>) about the changes made.
+This feature requires manual configuration in the post&rsquo;s front matter section.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="err">+++</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;Authoring The Redaction History&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">history</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nx">date</span> <span class="p">=</span> <span class="s2">&#34;2025-02-01&#34;</span><span class="p">,</span> <span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;Author Name&#34;</span><span class="p">,</span> <span class="nx">reviewer</span> <span class="p">=</span> <span class="s2">&#34;Reviewer Name&#34;</span><span class="p">,</span> <span class="nx">note</span> <span class="p">=</span> <span class="s2">&#34;Example&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nx">date</span> <span class="p">=</span> <span class="s2">&#34;2025-02-02&#34;</span><span class="p">,</span> <span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;Author Name&#34;</span><span class="p">,</span> <span class="nx">editor</span> <span class="p">=</span> <span class="s2">&#34;Editor Name&#34;</span><span class="p">,</span> <span class="nx">note</span> <span class="p">=</span> <span class="s2">&#34;Addendum (example)&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nx">date</span> <span class="p">=</span> <span class="s2">&#34;2025-02-03&#34;</span><span class="p">,</span> <span class="nx">note</span> <span class="p">=</span> <span class="s2">&#34;Errata (example)&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">+++</span>
+</span></span></code></pre></div><p>A chronological timeline displaying these information will appear under the article&rsquo;s information section, as demonstrated in this example post.</p>
 
         </section>
         <footer>
             
+    <div id="keywords">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="http://localhost:1313/en/tags/authoring/">Authoring</a></li>
+            <li><a href="http://localhost:1313/en/tags/redaction/">Redaction</a></li>
+            <li><a href="http://localhost:1313/en/tags/history/">History</a></li>
+    </ul>
+    </div>
         </footer>
     </article>
     <hr class="hide" style="margin: 1in 0;">
     <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
         <!-- related.html -->
         <!-- history.html -->
+        <div id="has-timeline">
+            <strong class="section-title">Redaction History</strong>
+            <ol>
+                    <li>
+                        <details class="presentation js-details" name="redaction-history">
+                            <summary>
+                                <time datetime="2025-02-01T00:00:00&#43;00:00">2025-02-01</time>
+                            </summary>
+                                <div class="has-aria-label-top" aria-label="Authors:">Author Name</div>
+                                <div class="has-aria-label-top" aria-label="Reviewed By:">Reviewer Name</div>
+                                <div class="has-aria-label-top" aria-label="Note:">Example</div>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="presentation js-details" name="redaction-history">
+                            <summary>
+                                <time datetime="2025-02-02T00:00:00&#43;00:00">2025-02-02</time>
+                            </summary>
+                                <div class="has-aria-label-top" aria-label="Authors:">Author Name</div>
+                                <div class="has-aria-label-top" aria-label="Edited By:">Editor Name</div>
+                                <div class="has-aria-label-top" aria-label="Note:">Addendum (example)</div>
+                        </details>
+                    </li>
+                    <li>
+                        <details class="presentation js-details" name="redaction-history">
+                            <summary>
+                                <time datetime="2025-02-03T00:00:00&#43;00:00">2025-02-03</time>
+                            </summary>
+                                <div class="has-aria-label-top" aria-label="Note:">Errata (example)</div>
+                        </details>
+                    </li>
+            </ol>
+            <p>Some information might changes over time, we keep redaction up to date.</p>
+        </div>
         <!-- colophon.html -->
     <div id="colophon" style="display: none;" aria-live="polite">
         <strong class="section-title">Colophon</strong>
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="Pin"><span>http://localhost:1313/en/en/pin/</span></div>
+                <div class="has-aria-label-top" aria-label="Authoring The Redaction History"><span>http://localhost:1313/en/en/posts/my-first-post/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
                 <div><span>This page is built on: </span><time datetime="2025-02-06T17:19:30&#43;01:00">2025-02-06T17:19:30&#43;01:00</time></div>
                 
@@ -262,9 +223,9 @@ If images are not square, the layout will displayed as masonry style.</p>
     <li id="has-mastodon">
         <!-- mastodon.html -->
     <form class="form" id="mastodon" action="//sharetomastodon.github.io/" target="_blank" rel="noopener noreferrer">
-        <input id="mastodonTitle" type="hidden" name="title" value="Pin">
-        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/en/en/pin/">
-        <input id="mastodonText" type="hidden" name="text" value="Pin http://localhost:1313/en/en/pin/" disabled>
+        <input id="mastodonTitle" type="hidden" name="title" value="Authoring The Redaction History">
+        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/en/en/posts/my-first-post/">
+        <input id="mastodonText" type="hidden" name="text" value="Authoring The Redaction History http://localhost:1313/en/en/posts/my-first-post/" disabled>
         <input id="mastodonInstance" type="url" class="ldots form__input" placeholder="Enter Mastodon instance (https://www.example.com)" aria-label="Mastodon instance URL">
         <button class="form__button" type="submit" aria-label="Share on Mastodon">
             <i class="icon mastodon" aria-hidden="true"></i>
@@ -273,89 +234,89 @@ If images are not square, the layout will displayed as masonry style.</p>
     </form>
     </li>
     <li>
-        <a href="mailto:?subject=Pin&body=http%3a%2f%2flocalhost%3a1313%2fen%2fen%2fpin%2f" title="Email" role="button" aria-label="Email">
+        <a href="mailto:?subject=Authoring%20The%20Redaction%20History&body=http%3a%2f%2flocalhost%3a1313%2fen%2fen%2fposts%2fmy-first-post%2f" title="Email" role="button" aria-label="Email">
             <i class="email" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Email</span>
         </a>
     </li>
     <li>
-        <a href="whatsapp://send?text=Pin%20http%3a%2f%2flocalhost%3a1313%2fen%2fen%2fpin%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
+        <a href="whatsapp://send?text=Authoring%20The%20Redaction%20History%20http%3a%2f%2flocalhost%3a1313%2fen%2fen%2fposts%2fmy-first-post%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
             <i class="whatsapp" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Whatsapp</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=Pin&amp;url=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=Authoring%20The%20Redaction%20History&amp;url=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Telegram in new tab">
             <i class="telegram" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Telegram</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=Pin&amp;url=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=Authoring%20The%20Redaction%20History&amp;url=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Bluesky in new tab">
             <i class="bluesky" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Bluesky</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Facebook in new tab">
             <i class="facebook" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Facebook</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/en/en/pin/&amp;t=Pin" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/en/en/posts/my-first-post/&amp;t=Authoring%20The%20Redaction%20History" role="button"
             aria-label="Share on Hackernews in new tab">
             <i class="hackernews" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Hackernews</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/en/en/pin/&amp;title=Pin&amp;summary=Pin&amp;source=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/en/en/posts/my-first-post/&amp;title=Authoring%20The%20Redaction%20History&amp;summary=Authoring%20The%20Redaction%20History&amp;source=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Linkedin in new tab">
             <i class="linkedin" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Linkedin</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/en/en/pin/&amp;media=http://localhost:1313/en/en/pin/&amp;description=Pin" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/en/en/posts/my-first-post/&amp;media=http://localhost:1313/en/en/posts/my-first-post/&amp;description=Authoring%20The%20Redaction%20History" role="button"
             aria-label="Share on Pinterest in new tab">
             <i class="pinterest" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Pinterest</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/en/en/pin/&amp;resubmit=true&amp;title=Pin" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/en/en/posts/my-first-post/&amp;resubmit=true&amp;title=Authoring%20The%20Redaction%20History" role="button"
             aria-label="Share on Reddit in new tab">
             <i class="reddit" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Reddit</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Pin&amp;caption=Pin&amp;content=http://localhost:1313/en/en/pin/&amp;canonicalUrl=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Authoring%20The%20Redaction%20History&amp;caption=Authoring%20The%20Redaction%20History&amp;content=http://localhost:1313/en/en/posts/my-first-post/&amp;canonicalUrl=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Tumblr in new tab">
             <i class="tumblr" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Tumblr</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=Pin&amp;url=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=Authoring%20The%20Redaction%20History&amp;url=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Vk in new tab">
             <i class="vk" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Vk</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=Pin&amp;url=http://localhost:1313/en/en/pin/" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=Authoring%20The%20Redaction%20History&amp;url=http://localhost:1313/en/en/posts/my-first-post/" role="button"
             aria-label="Share on Twitter in new tab">
             <i class="twitter" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Twitter</span>
         </a>
     </li>
     <li>
-        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/en/en/pin/;title=Pin" role="button"
+        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/en/en/posts/my-first-post/;title=Authoring%20The%20Redaction%20History" role="button"
             aria-label="Share on Xing in new tab">
             <i class="xing" aria-hidden="true"></i>
             <span class="t" role="tooltip">Share on Xing</span>
@@ -537,7 +498,7 @@ If images are not square, the layout will displayed as masonry style.</p>
 </footer>
 
     
-    <!-- [post] single.html -->
+    <!-- [post] single.html --><script>document.getElementById('setColorPalette').setAttribute('style', 'display:flex;');</script>
     <div id="bionReadSnapshot" hidden></div>
     <!-- [background] baseof.html -->
     <div id="background-body"

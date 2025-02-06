@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories | My New Hugo Site</title>
+    <title>Categories | Sachi</title>
     <meta name="author" content="">
     <meta name="keywords" content="Categories" >
     <link rel="canonical" href="http://localhost:1313/en/categories/" >
     
     
-    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/en/categories/index.xml" title="My New Hugo Site" />
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/en/categories/index.xml" title="Sachi" />
     <!-- js.html -->
     <script src="http://localhost:1313/js/hugo-brewm.min.js" defer></script><!-- css.html -->
     <link rel="stylesheet" href="http://localhost:1313/css/hugo-brewm.min.css">
@@ -98,17 +98,32 @@
         </div>
         
     
-            <div style="display: flex; height: var(--vbody);">
-        <div class="hero" style="margin: auto; width: var(--canonic);">
-            <div class="hero__image">
-                <img src="https://i.pinimg.com/736x/bf/34/76/bf3476c1569c5af162779ecbb4134c3a.jpg" alt="Not today, maybe tomorow..." decoding="async">
-            </div>
-            <div class="hero__content">
-                <h1 style="font-style: normal;">No articles to show.</h1>
-                <p>It appears that our author ran out of coffee... Keep calm, we&#39;ll brew one shortly!</p>
-            </div>
+            <section class="pagewidth">
+                    <!-- listing.html -->
+        <div id="list-categories" class="carousel">
+            <header class="section-title">Categories</header>
+            <!-- taxonomies.html -->
+        <ul class="carousel__viewport" role="presentation">
+            
+                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/6.svg);">
+                        <a href="http://localhost:1313/en/categories/authoring/"
+                            aria-label="Category:Authoring"
+                            data-post-counter="1"
+                            >
+                            <span>Authoring</span>
+                        </a>
+                    </li>
+                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/38.svg);">
+                        <a href="http://localhost:1313/en/categories/configuration/"
+                            aria-label="Category:Configuration"
+                            data-post-counter="1"
+                            >
+                            <span>Configuration</span>
+                        </a>
+                    </li>
+        </ul>
         </div>
-    </div>
+            </section>
         <!-- main/footer.html -->
     
     </main>

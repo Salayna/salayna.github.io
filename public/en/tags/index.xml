@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
+    <title>Tags on Sachi</title>
     <link>http://localhost:1313/en/tags/</link>
-    <description>Recent Posts in Tags on My New Hugo Site</description>
+    <description>Recent Posts in Tags on Sachi</description>
     <generator>Hugo 0.143.1</generator>
     <language>en-us</language>
     <copyright>Copyright (c) Foxxi</copyright>
-    <lastBuildDate>Thu, 06 Feb 2025 17:07:26 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2025 17:19:53 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authoring</title>
+      <link>http://localhost:1313/en/tags/authoring/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/authoring/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>History</title>
+      <link>http://localhost:1313/en/tags/history/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/history/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Redaction</title>
+      <link>http://localhost:1313/en/tags/redaction/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/redaction/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Configuration</title>
+      <link>http://localhost:1313/en/tags/configuration/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/configuration/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Discussion</title>
+      <link>http://localhost:1313/en/tags/discussion/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/discussion/</guid>
+      <description></description>
+      
+    </item>
   </channel>
 </rss>
