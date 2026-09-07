@@ -72,3 +72,6 @@ disableKinds = ["taxonomy", "term", "rss"]
 
 [build.buildStats]
   enable = false
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
