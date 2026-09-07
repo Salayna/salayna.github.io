@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article {{ with .Params.accent }}style="--accent: {{ . }}"{{ end }}>
+  <header class="page-head container">
+    <div class="accent-bar" aria-hidden="true"></div>
+    <h1 class="display" style="font-size: var(--step-3)">{{ .Title }}</h1>
+    <div class="lede"><p>{{ .Params.blurb }}</p></div>
+
+    <p class="page-head__meta">
+      {{ with .Params.status }}<span>{{ . }}</span>{{ end }}
+      {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
+      {{ with .Params.role }}<span>{{ . }}</span>{{ end }}
+    </p>
+
+    {{ if or .Params.link .Params.repo }}
+      <div class="page-head__links">
+        {{ with .Params.link }}<a class="btn" href="{{ . }}" rel="noopener">{{ partial "icon.html" "globe" }}Visit the site</a>{{ end }}
+        {{ with .Params.repo }}<a class="btn" href="{{ . }}" rel="noopener">{{ partial "icon.html" "github" }}Source</a>{{ end }}
+      </div>
+    {{ end }}
+  </header>
+
+  <section class="section container">
+    <div class="prose">{{ .Content }}</div>
+
+    {{ with .Params.stack }}
+      <ul class="tags" style="margin-top: 2.5rem">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    {{ end }}
+  </section>
+</article>
+{{ end }}

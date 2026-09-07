@@ -1,0 +1,33 @@
+# Real history, carried over from ../personnal/data/en/experience.toml.
+roles:
+  - when: "Sept 2025 — now"
+    title: "Mobile Engineer"
+    org: "Jagger Lewis"
+    link: "https://jagger-lewis.com/"
+    where: "France"
+    note: "Working on the Jagger Lewis mobile app in Flutter."
+    does:
+      - "Maintaining the Jagger & Lewis app"
+      - "Planning new features with the IoT engineers"
+      - "Setting up a CI/CD pipeline"
+    tech: ["Flutter", "Github Actions", "Sentry"]
+
+  - when: "Mar 2023 — Aug 2025"
+    title: "Mobile Engineer"
+    org: "Niji"
+    note: "Mobile applications for a range of clients — Engie, EDF, Karavel and others."
+    does:
+      - "Worked on the Engie Vianeo app in Flutter"
+      - "Worked on the EDF app suite, four apps in a monorepo"
+      - "Built mobile app POCs ahead of sales"
+      - "Researched technologies to integrate into the company forge"
+    tech: ["Flutter", "Bitrise", "Kotlin", "Swift"]
+
+  - when: "Nov 2021 — Mar 2023"
+    title: "Fullstack Engineer"
+    org: "NRCI"
+    does:
+      - "Worked on the NRCounter mobile app"
+      - "Helped design the NRCounter IoT firmware"
+      - "Worked on the backend for the NRCounter app"
+    tech: ["Flutter", "Github Actions", "NestJS", "InfluxDB", "MongoDB"]

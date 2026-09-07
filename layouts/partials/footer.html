@@ -1,0 +1,8 @@
+<footer class="footer">
+  <div class="footer__inner container">
+    <span>&copy; {{ now.Year }} {{ site.Params.name }} — {{ site.Params.location }}</span>
+    <span class="footer__social">
+      {{ range site.Params.social }}<a href="{{ .url }}" rel="me noopener">{{ .name }}</a>{{ end }}
+    </span>
+  </div>
+</footer>

@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ partial "band.html" (dict "title" "That page isn't here") }}
+<section class="section container">
+  <div class="lede">
+    <p>The link may be out of date. Press <kbd>&#8984;K</kbd> to search, or head back to the <a href="{{ "/" | relURL }}">index</a>.</p>
+  </div>
+</section>
+{{ end }}

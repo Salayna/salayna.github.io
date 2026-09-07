@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ partial "band.html" (dict "title" .Title) }}
+<section class="section container">
+  {{ with .Content }}<div class="lede">{{ . }}</div>{{ end }}
+  <div class="posts">
+    {{ range .RegularPages }}
+      <a class="post-row" href="{{ .RelPermalink }}">
+        <span class="post-row__date">{{ if not .Date.IsZero }}{{ .Date.Format "2 Jan 2006" }}{{ end }}</span>
+        <div><span class="post-row__title">{{ .Title }}</span></div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

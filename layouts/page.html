@@ -1,0 +1,8 @@
+{{ define "main" }}
+<article>
+  {{ partial "band.html" (dict "title" .Title) }}
+  <section class="section container">
+    <div class="prose">{{ .Content }}</div>
+  </section>
+</article>
+{{ end }}

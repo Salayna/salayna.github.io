@@ -1,0 +1,49 @@
+{{- /* One project card. Expects a Page with project front matter. */ -}}
+{{- $status := .Params.status | default "" -}}
+{{- $live := in (slice "shipped" "live") (lower $status) -}}
+<a class="card" href="{{ .RelPermalink }}"
+   {{ with .Params.accent }}style="--accent: {{ . }}"{{ end }}
+   data-tags="{{ delimit (.Params.tags | default slice) " " }}"
+   data-search="{{ .Title }} {{ .Params.blurb }} {{ delimit (.Params.stack | default slice) " " }} {{ .Params.role }}">
+
+  <div class="card__thumb">
+    {{ with .Params.image }}
+      <img src="{{ . | relURL }}" alt="">
+    {{ else }}
+      <span class="card__glyph" aria-hidden="true">{{ substr .Title 0 1 | upper }}</span>
+    {{ end }}
+
+    <div class="card__badges">
+      {{ with $status }}
+        <span class="badge {{ if $live }}badge--live{{ else }}badge--warn{{ end }}">
+          <span class="badge__dot" aria-hidden="true"></span>{{ . }}
+        </span>
+      {{ end }}
+      {{ if .Params.featured }}<span class="badge badge--warn">Featured</span>{{ end }}
+    </div>
+  </div>
+
+  <div class="card__head">
+    <span class="card__title">{{ .Title }}</span>
+    {{ with .Params.year }}<span class="card__year">{{ . }}</span>{{ end }}
+  </div>
+
+  {{ with .Params.blurb }}<p class="card__blurb">{{ . }}</p>{{ end }}
+  {{ with .Params.role }}<p class="card__role">{{ . }}</p>{{ end }}
+
+  {{/* Only draw the footer rule when there is something to put under it. */}}
+  {{ if or .Params.stack .Params.link .Params.repo }}
+    <div class="card__foot">
+      {{ with .Params.stack }}
+        <ul class="tags">{{ range first 5 . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{ end }}
+
+      {{ if or .Params.link .Params.repo }}
+        <span class="card__links">
+          {{ with .Params.link }}<span title="Live site">{{ partial "icon.html" "globe" }}</span>{{ end }}
+          {{ with .Params.repo }}<span title="Source">{{ partial "icon.html" "github" }}</span>{{ end }}
+        </span>
+      {{ end }}
+    </div>
+  {{ end }}
+</a>

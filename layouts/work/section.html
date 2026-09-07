@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ partial "band.html" (dict "title" .Title) }}
+
+<section class="section container">
+  {{ with .Content }}<div class="lede">{{ . }}</div>{{ end }}
+
+  {{ $work := sort .RegularPages "Params.weight" }}
+
+  {{/* Filter set is built from the tags the projects actually use. */}}
+  {{ $tags := slice }}
+  {{ range $work }}{{ range .Params.tags }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
+  {{ $tags = uniq $tags | sort }}
+
+  <div class="toolbar" data-filters>
+    <label class="field">
+      <span class="visually-hidden">Filter projects by name or technology</span>
+      {{ partial "icon.html" "search" }}
+      <input type="search" data-filter-search placeholder="Search projects, technologies…">
+    </label>
+
+    <div class="segmented" role="group" aria-label="Filter projects by kind">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      {{ range $tags }}
+        <button type="button" data-filter="{{ . }}" aria-pressed="false">{{ humanize . }}</button>
+      {{ end }}
+    </div>
+
+    <span class="toolbar__count" data-filter-count aria-live="polite"></span>
+  </div>
+
+  <div class="cards">
+    {{ range $work }}{{ partial "project-card.html" . }}{{ end }}
+  </div>
+
+  <p class="empty" data-filter-empty hidden>No project matches those filters.</p>
+</section>
+{{ end }}

@@ -1,0 +1,41 @@
+{{- $index := slice -}}
+
+{{- range where site.RegularPages "Section" "work" -}}
+  {{- $index = $index | append (dict
+      "title"   .Title
+      "url"     .RelPermalink
+      "kind"    "Project"
+      "summary" (.Params.blurb | default "" | plainify)
+      "tags"    (union (.Params.stack | default slice) (.Params.tags | default slice))
+  ) -}}
+{{- end -}}
+
+{{- range where site.RegularPages "Section" "writing" -}}
+  {{- $index = $index | append (dict
+      "title"   .Title
+      "url"     .RelPermalink
+      "kind"    "Writing"
+      "summary" (.Params.summary | default .Summary | plainify | truncate 120)
+      "tags"    (.Params.tags | default slice)
+  ) -}}
+{{- end -}}
+
+{{- range site.Sections -}}
+  {{- $index = $index | append (dict
+      "title"   .Title
+      "url"     .RelPermalink
+      "kind"    "Page"
+      "summary" ""
+      "tags"    slice
+  ) -}}
+{{- end -}}
+
+{{- $index = $index | append (dict
+    "title"   "Index"
+    "url"     (relURL "/")
+    "kind"    "Page"
+    "summary" site.Params.description
+    "tags"    slice
+) -}}
+
+{{- $index | jsonify -}}

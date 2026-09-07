@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article>
+  <header class="page-head container">
+    <h1 class="display" style="font-size: var(--step-3)">{{ .Title }}</h1>
+    <p class="page-head__meta">
+      {{ if not .Date.IsZero }}<span>{{ .Date.Format "2 January 2006" }}</span>{{ end }}
+      <span>{{ .ReadingTime }} min read</span>
+    </p>
+  </header>
+  <section class="section container">
+    <div class="prose">{{ .Content }}</div>
+  </section>
+</article>
+{{ end }}

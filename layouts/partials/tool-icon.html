@@ -1,0 +1,60 @@
+{{- /* Icon for a tool name, inlined from assets/icons/ at build time.
+
+       dv-*  Devicon (MIT)       — tech logos, "plain" monochrome variants
+       si-*  Simple Icons (CC0)  — brand marks Devicon has no plain variant for
+       lu-*  Lucide (ISC)        — line icons for tools with no logo at all
+
+       Matching is on the name lowercased with non-alphanumerics stripped, so
+       "Github Actions" and "github-actions" resolve the same. The map covers
+       more than data/stack.yaml currently lists, so swapping tools in and out
+       does not need an icon change. Anything unmapped falls back to a package
+       glyph, so adding a tool never leaves a hole. */ -}}
+
+{{- $k := replaceRE "[^a-z0-9]" "" (lower .) -}}
+
+{{- $map := dict
+  "flutter"          "dv-flutter"
+  "swift"            "dv-swift"
+  "android"          "dv-android"
+  "javascript"       "dv-javascript"
+  "js"               "dv-javascript"
+  "go"               "dv-go"
+  "golang"           "dv-go"
+  "nodejs"           "dv-nodejs"
+  "node"             "dv-nodejs"
+  "postgresql"       "dv-postgresql"
+  "postgres"         "dv-postgresql"
+  "supabase"         "dv-supabase"
+  "firebase"         "dv-firebase"
+  "docker"           "dv-docker"
+  "githubactions"    "dv-githubactions"
+  "appwrite"         "si-appwrite"
+  "sentry"           "si-sentry"
+  "posthog"          "si-posthog"
+  "dart"             "si-dart"
+  "figma"            "si-figma"
+  "linear"           "si-linear"
+  "mapbox"           "si-mapbox"
+  "fastlane"         "si-fastlane"
+  "mqtt"             "si-mqtt"
+  "codemagic"        "si-codemagic"
+  "bloc"             "lu-layers"
+  "drift"            "lu-database"
+  "riverpod"         "lu-droplet"
+  "pigeon"           "lu-bird"
+  "platformchannels" "lu-cable"
+  "postgrest"        "lu-braces"
+  "rest"             "lu-braces"
+  "edgefunctions"    "lu-zap"
+  "designtokens"     "lu-palette"
+  "testflight"       "lu-send"
+  "fvm"              "lu-git-branch"
+-}}
+
+{{- $file := index $map $k | default "lu-package" -}}
+
+<span class="ti{{ if not (hasPrefix $file "lu-") }} ti--brand{{ end }}" aria-hidden="true">
+  {{- with resources.Get (printf "icons/%s.svg" $file) -}}
+    {{- .Content | safeHTML -}}
+  {{- end -}}
+</span>

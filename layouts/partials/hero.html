@@ -1,0 +1,61 @@
+<div class="hero container">
+  {{/* Cover: drop assets/img/banner.<jpg|jpeg|png|webp|avif> in and it appears.
+       params.banner still works as an override for a file in static/. */}}
+  {{ $banner := false }}
+  {{ range slice "jpg" "jpeg" "png" "webp" "avif" }}
+    {{ if not $banner }}
+      {{ with resources.Get (printf "img/banner.%s" .) }}{{ $banner = . }}{{ end }}
+    {{ end }}
+  {{ end }}
+
+  <div class="banner">
+    {{ if $banner }}
+      {{ $b := $banner.Fill "1600x350 Center" }}
+      <img src="{{ $b.RelPermalink }}" width="{{ $b.Width }}" height="{{ $b.Height }}" alt="">
+    {{ else if site.Params.banner }}
+      <img src="{{ site.Params.banner | relURL }}" alt="">
+    {{ else }}
+      {{ partial "banner-art.html" . }}
+    {{ end }}
+  </div>
+
+  <div class="identity">
+  {{/* Profile picture: assets/img/avatar.<jpg|jpeg|png|webp|avif>.
+       Falls back to the initial when there is no file. */}}
+  {{ $avatar := false }}
+  {{ range slice "jpg" "jpeg" "png" "webp" "avif" }}
+    {{ if not $avatar }}
+      {{ with resources.Get (printf "img/avatar.%s" .) }}{{ $avatar = . }}{{ end }}
+    {{ end }}
+  {{ end }}
+
+    <div class="avatar" aria-hidden="true">
+      {{ if $avatar }}
+        {{ $a := $avatar.Fill "320x320 Center" }}
+        <img src="{{ $a.RelPermalink }}" width="320" height="320" alt="">
+      {{ else if site.Params.avatar }}
+        <img src="{{ site.Params.avatar | relURL }}" alt="">
+      {{ else }}
+        {{ substr site.Params.name 0 1 }}
+      {{ end }}
+    </div>
+
+    <div class="identity__body">
+      <h1 class="identity__name display">{{ site.Params.name }}</h1>
+      <p class="identity__role">{{ site.Params.role }}</p>
+      <p class="meta">
+        <span class="meta__item">{{ partial "icon.html" "pin" }}{{ site.Params.location }}</span>
+        {{ if site.Params.available }}
+          <span class="meta__sep" aria-hidden="true">&middot;</span>
+          <span class="meta__item meta__item--live">
+            <span class="meta__dot" aria-hidden="true"></span>Open to new work
+          </span>
+        {{ end }}
+      </p>
+    </div>
+
+    <button class="search-pill" type="button" data-palette-open>
+      {{ partial "icon.html" "search" }}<kbd>&#8984;K</kbd>
+    </button>
+  </div>
+</div>

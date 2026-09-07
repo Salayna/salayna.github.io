@@ -1,0 +1,11 @@
+# Real stack, carried over from ../personnal/data/en/tech.toml.
+# Names here drive the icons — see layouts/partials/tool-icon.html.
+groups:
+  - name: "Mobile"
+    items: ["Flutter", "Swift", "Android"]
+
+  - name: "Backend and data"
+    items: ["Go", "Node.js", "JavaScript", "PostgreSQL", "Supabase", "Appwrite", "Firebase"]
+
+  - name: "Shipping and monitoring"
+    items: ["Docker", "Github Actions", "Sentry", "PostHog"]

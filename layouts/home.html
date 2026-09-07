@@ -1,0 +1,91 @@
+{{ define "main" }}
+
+{{ partial "hero.html" . }}
+
+{{ partial "band.html" (dict "title" "About" "id" "about") }}
+<section class="section container">
+  <div class="lede">{{ .Content }}</div>
+
+  {{ with site.Params.snapshot }}
+    <div class="panel">
+      <span class="label panel__label">Developer snapshot</span>
+      <ul class="panel__items">
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    </div>
+  {{ end }}
+</section>
+
+{{ $work := where site.RegularPages "Section" "work" }}
+{{ with first 4 (sort $work "Params.weight") }}
+  {{ partial "band.html" (dict "title" "Selected work" "id" "work"
+                              "more" (printf "All %d projects →" (len $work)) "href" "/work/") }}
+  <section class="section container">
+    <div class="cards">
+      {{ range . }}{{ partial "project-card.html" . }}{{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ with hugo.Data.experience.roles }}
+  {{ partial "band.html" (dict "title" "Experience" "id" "experience") }}
+  <section class="section container">
+    <ul class="roles">
+      {{ range . }}
+        {{ $r := . }}
+        <li class="role">
+          <span class="role__when">{{ .when }}</span>
+          <div>
+            <p class="role__head">
+              <span class="role__title">{{ .title }}</span>{{ with .org }}, {{ with $r.link }}<a class="role__org role__org--link" href="{{ . }}" rel="noopener">{{ $r.org }}</a>{{ else }}<span class="role__org">{{ $r.org }}</span>{{ end }}{{ end }}{{ with .where }}<span class="role__where">{{ . }}</span>{{ end }}
+            </p>
+            {{ with .note }}<p class="role__note">{{ . }}</p>{{ end }}
+            {{ with .does }}
+              <ul class="role__does">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+            {{ end }}
+            {{ with .tech }}
+              <ul class="tags role__tech">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+            {{ end }}
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}
+
+{{ with hugo.Data.stack.groups }}
+  {{ partial "band.html" (dict "title" "Tools I reach for" "id" "stack") }}
+  <section class="section container">
+    <div class="stack">
+      {{ range . }}
+        <div class="stack__group">
+          <h3 class="label">{{ .name }}</h3>
+          <ul class="tools">
+            {{ range .items }}
+              <li class="tool-tile">{{ partial "tool-icon.html" . }}<span>{{ . }}</span></li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ with first 4 (where site.RegularPages "Section" "writing").ByDate.Reverse }}
+  {{ partial "band.html" (dict "title" "Writing" "id" "writing" "more" "All posts →" "href" "/writing/") }}
+  <section class="section container">
+    <div class="posts">
+      {{ range . }}
+        <a class="post-row" href="{{ .RelPermalink }}">
+          <span class="post-row__date">{{ if not .Date.IsZero }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+          <div>
+            <span class="post-row__title">{{ .Title }}</span>
+            {{ with .Params.summary }}<p class="post-row__summary">{{ . }}</p>{{ end }}
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ end }}

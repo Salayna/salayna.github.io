@@ -1,0 +1,8 @@
+{{- /* Ruled section header. Expects a dict: title, and optionally id,
+       more (link text) and href. */ -}}
+<div class="band"{{ with .id }} id="{{ . }}"{{ end }}>
+  <div class="band__inner">
+    <h2 class="display">{{ .title }}</h2>
+    {{ if and .more .href }}<a class="band__more" href="{{ .href | relURL }}">{{ .more }}</a>{{ end }}
+  </div>
+</div>

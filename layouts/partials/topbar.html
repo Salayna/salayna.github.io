@@ -1,0 +1,22 @@
+<header class="topbar">
+  <div class="topbar__inner container">
+    <a class="wordmark" href="{{ "/" | relURL }}">{{ site.Params.name }}</a>
+
+    <nav class="topbar__nav" aria-label="Primary">
+      {{ $page := . }}
+      {{ range site.Menus.main }}
+        <a class="topbar__link" href="{{ .URL | relURL }}"
+           {{ if or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    <div class="topbar__tools">
+      <button class="icon-btn" type="button" data-palette-open aria-label="Search the site" aria-keyshortcuts="Meta+K">
+        {{ partial "icon.html" "search" }}
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark theme">
+        {{ partial "icon.html" "moon" }}{{ partial "icon.html" "sun" }}
+      </button>
+    </div>
+  </div>
+</header>
