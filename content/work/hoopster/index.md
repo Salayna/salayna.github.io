@@ -10,6 +10,7 @@ accent: "#0E9F6E"
 tags: ["product", "beta"]
 stack: ["Flutter", "Supabase", "Mapbox", "Bloc", "Postgres"]
 link: "https://hoopster.lazertape.dev"
+card_link: "none"
 ---
 
 I moved to northern France and couldn't find a game. Asking around got me nowhere:

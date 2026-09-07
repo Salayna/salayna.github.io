@@ -16,6 +16,8 @@
   <svg {{ $a }}><rect x="1.8" y="3.4" width="12.4" height="9.2" rx="1.6"/><path d="m2.4 4.6 5.6 4 5.6-4"/></svg>
 {{- else if eq . "eye" -}}
   <svg {{ $a }}><path d="M1.4 8S3.8 3.6 8 3.6 14.6 8 14.6 8 12.2 12.4 8 12.4 1.4 8 1.4 8Z"/><circle cx="8" cy="8" r="1.9"/></svg>
+{{- else if eq . "external" -}}
+  <svg {{ $a }}><path d="M6.5 3H3.4v9.6H13V9.5"/><path d="M9.6 2.4H13.6V6.4"/><path d="M8 8 13.4 2.6"/></svg>
 {{- else if eq . "arrow" -}}
   <svg {{ $a }}><path d="M3 8h10M9 4l4 4-4 4"/></svg>
 {{- end -}}

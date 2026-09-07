@@ -1,0 +1,39 @@
+{{- /* Favicon and social preview image, both drop-in from assets/img/.
+       Nothing here is required — each block is skipped if the file is absent. */ -}}
+
+{{- /* Favicon: assets/img/favicon.svg is linked as-is; a raster one is
+       resized into a 32px icon plus a 180px apple-touch-icon. */ -}}
+{{- with resources.Get "img/favicon.svg" }}
+  <link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml">
+{{- else }}
+  {{- $fav := false -}}
+  {{- range slice "png" "jpg" "jpeg" "webp" -}}
+    {{- if not $fav }}{{ with resources.Get (printf "img/favicon.%s" .) }}{{ $fav = . }}{{ end }}{{ end -}}
+  {{- end -}}
+  {{- with $fav }}
+    {{- $i := .Fill "32x32 Center" }}
+    <link rel="icon" href="{{ $i.RelPermalink }}" sizes="32x32">
+    {{- $a := .Fill "180x180 Center" }}
+    <link rel="apple-touch-icon" href="{{ $a.RelPermalink }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Social preview: assets/img/og.*, falling back to the hero banner. */ -}}
+{{- $og := false -}}
+{{- range slice "jpg" "jpeg" "png" "webp" -}}
+  {{- if not $og }}{{ with resources.Get (printf "img/og.%s" .) }}{{ $og = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- if not $og -}}
+  {{- range slice "jpg" "jpeg" "png" "webp" -}}
+    {{- if not $og }}{{ with resources.Get (printf "img/banner.%s" .) }}{{ $og = . }}{{ end }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $og }}
+  {{- $card := .Fill "1200x630 Center" }}
+  <meta property="og:image" content="{{ $card.Permalink }}">
+  <meta property="og:image:width" content="{{ $card.Width }}">
+  <meta property="og:image:height" content="{{ $card.Height }}">
+  <meta name="twitter:card" content="summary_large_image">
+{{- else }}
+  <meta name="twitter:card" content="summary">
+{{- end }}

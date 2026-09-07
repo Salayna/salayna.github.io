@@ -8,4 +8,5 @@ blurb: "Peer-to-peer car rental for Kigali. Owners list a car, drivers book it, 
 accent: "#0F766E"
 tags: ["product", "live"]
 stack: ["Flutter", "Firebase", "Stripe"]
+card_link: "none"
 ---

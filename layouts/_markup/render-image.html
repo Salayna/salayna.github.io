@@ -1,0 +1,40 @@
+{{- /* Markdown image render hook.
+
+       Resolves ![alt](src "caption") in this order:
+         1. a file sitting next to the page (a page bundle) — the usual case
+         2. assets/<src>
+         3. anything else is passed through as a plain URL (remote, or static/)
+
+       Resolved raster images are resized and get real width/height, so the
+       page does not jump as they load. SVG and GIF pass through untouched —
+       Hugo cannot resize the first and would kill the animation on the second. */ -}}
+
+{{- $src := .Destination -}}
+{{- $img := false -}}
+
+{{- with .Page.Resources.GetMatch $src }}{{ $img = . }}{{ end -}}
+{{- if not $img }}{{ with resources.Get (strings.TrimPrefix "/" $src) }}{{ $img = . }}{{ end }}{{ end -}}
+
+{{- if not .IsBlock -}}
+  {{- /* Inline image inside a sentence: no figure, no caption. */ -}}
+  {{- if $img }}<img class="fig-inline" src="{{ $img.RelPermalink }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">
+  {{- else }}<img class="fig-inline" src="{{ $src | safeURL }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">{{ end -}}
+{{- else -}}
+<figure class="fig">
+{{- if $img -}}
+  {{- $sub := $img.MediaType.SubType -}}
+  {{- $raster := and (eq $img.MediaType.MainType "image") (not (in (slice "svg+xml" "svg" "gif") $sub)) -}}
+  {{- if $raster -}}
+    {{- $out := $img -}}
+    {{- if gt $img.Width 1400 }}{{ $out = $img.Resize "1400x q85" }}{{ end -}}
+    <img src="{{ $out.RelPermalink }}" width="{{ $out.Width }}" height="{{ $out.Height }}"
+         alt="{{ .PlainText }}" loading="lazy" decoding="async">
+  {{- else -}}
+    <img src="{{ $img.RelPermalink }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">
+  {{- end -}}
+{{- else -}}
+  <img src="{{ $src | safeURL }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">
+{{- end -}}
+{{- with .Title }}<figcaption>{{ . }}</figcaption>{{ end -}}
+</figure>
+{{- end -}}

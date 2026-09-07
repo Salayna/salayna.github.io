@@ -88,6 +88,7 @@ role: "Solo"
 blurb: "One sentence. This shows on the index and in search."
 accent: "#0E9F6E"      # the project's own colour
 featured: true         # optional, adds the "Featured" badge
+card_link: "page"      # page (default) | external | none — see below
 tags: ["product", "beta"]   # these become the filter buttons
 image: "/img/shot.png"      # optional, replaces the generated thumbnail
 stack: ["Flutter", "Supabase"]
@@ -107,6 +108,35 @@ screenshots look better — this is just a floor, not a target.
 
 `link` is deliberately not `url`: Hugo treats `url` in front matter as the page's
 own output path and will fail the build on an absolute URL.
+
+### What a card links to
+
+`card_link` decides that, per project:
+
+| Value | Behaviour |
+| --- | --- |
+| `page` (default) | opens the project's own detail page |
+| `external` | goes straight to `link`, marked with a ↗ next to the title |
+| `none` | not clickable at all |
+
+Use `external` for a project with nothing written up — it skips the empty
+detail page. Use `none` for something you want to show but not send people to.
+
+With `none`, the globe and repo icons in the card footer become **real links**,
+so the card can still offer a way through without being one big link itself.
+(With `page` or `external` they stay decorative, since anchors cannot nest.)
+
+`external` falls back to the detail page if `link` is missing, so a typo
+degrades rather than producing a dead card.
+
+A `none` card still has a detail page, it is just unlinked. To stop Hugo
+building that page at all, add to the project's front matter:
+
+```yaml
+_build:
+  render: never
+  list: local
+```
 
 ## Design notes
 
@@ -188,6 +218,94 @@ Brand marks are solid and line icons are stroked, so the solid ones render at
 Anything unmapped falls back to a package glyph, so adding a tool never leaves
 a hole. See `assets/icons/SOURCES.md` for licences and how to add one.
 
+## Images
+
+Every image slot in the site, and what it does with what you give it. All of
+them are optional — each falls back on its own if the file is absent.
+
+| What | Put it here | Output | Shape | If missing |
+| --- | --- | --- | --- | --- |
+| Profile picture | `assets/img/avatar.*` | 320x320 | square, centre-cropped | your initial in the display face |
+| Cover banner | `assets/img/banner.*` | 1600x350 | 32:7, centre-cropped | generated SVG artwork |
+| Card thumbnail | `content/work/<project>/cover.*` (or `thumb.*`, or `image:`) | 640x360 | 16:9, centre-cropped | dot-grid with the title's initial |
+| Body image | next to `index.md`, or `assets/<path>` | max 1400px wide | aspect kept | — |
+| Favicon | `assets/img/favicon.*` | 32x32 + 180x180 | square, centre-cropped | no icon |
+| Social preview | `assets/img/og.*` | 1200x630 | 1.91:1, centre-cropped | falls back to `banner.*` |
+
+### Formats
+
+| Slot | Accepts |
+| --- | --- |
+| avatar, banner, og | `.jpg` `.jpeg` `.png` `.webp` `.avif` |
+| favicon | `.svg` (linked as-is, not resized), else `.jpg` `.jpeg` `.png` `.webp` |
+| card thumbnail | any raster Hugo can decode |
+| body images | any raster; `.svg` and `.gif` pass through untouched |
+
+Where several extensions are listed the first match wins, in that order. Hugo
+cannot resize SVG, and resizing a GIF would flatten its animation — so both are
+passed straight through in body copy, and SVG is only special-cased for the
+favicon.
+
+Everything is cropped **from the centre**, so keep the subject near the middle.
+The banner is the one to watch: at 32:7 it is very wide, so a tall photo loses
+most of its top and bottom. Start from something landscape.
+
+Locally-resolved images get real `width` and `height` attributes and are
+lazy-loaded, so the page does not jump around as they load. Remote images
+(absolute URLs in markdown) are passed through untouched and get no dimensions,
+since those cannot be known at build time.
+
+### In the body of a post or project
+
+Turn the file into a **page bundle** — a folder with `index.md` inside — and put
+images next to it:
+
+```
+content/work/hoopster.md          ->   content/work/hoopster/
+                                         index.md
+                                         cover.jpg
+                                         shot.jpg
+```
+
+Then reference them by bare filename, no path:
+
+```markdown
+![Alt text](shot.jpg "An optional caption")
+```
+
+The third argument becomes a `<figcaption>`. `assets/`-relative paths
+(`![x](img/diagram.jpg)`) and absolute URLs also work, in that order of
+resolution.
+
+Anything resolved locally is resized to a 1400px cap and gets real `width` and
+`height` attributes, so the page does not jump around as images load. They are
+lazy-loaded. SVG and GIF pass through untouched — Hugo cannot resize the first
+and would flatten the animation on the second.
+
+An image on its own line becomes a `<figure>`; one used mid-sentence stays
+inline at text height.
+
+### The card thumbnail on /work/
+
+In order of preference:
+
+1. a `cover.*` or `thumb.*` file in the project's page bundle — nothing to
+   configure, it is just picked up
+2. `image: "shot.jpg"` in front matter, resolved against the bundle then `assets/`
+3. `image: "/img/shot.png"` as a plain path into `static/`
+4. no image at all — the generated dot-grid thumbnail with the title's initial
+
+Whatever it finds is cropped to 640x360 from the centre.
+
+### The hero, favicon and social preview
+
+All four live in `assets/img/` under fixed names — `avatar`, `banner`,
+`favicon`, `og` — with no configuration. See `assets/img/README.md`.
+
+The social preview falls back to `banner.*` if there is no `og.*`, so setting a
+cover image gets you a link preview for free. Note `og:image` is emitted as an
+absolute URL, so `baseURL` in `hugo.toml` must be right or previews will break.
+
 ## The interactive bits
 
 **Theme toggle.** An inline blocking script in `baseof.html` sets
@@ -208,7 +326,7 @@ query like "hoop" matches any long sentence containing those letters in order.
 - Set `baseURL` in `hugo.toml`.
 - Replace the placeholder social URLs and `email`.
 - Set `available = false` in `[params]` to hide the "Open to new work" dot.
-- Add a favicon and an OG image to `static/`.
+- Add `favicon.*` and `og.*` to `assets/img/` (see the Images table).
 - Optionally add `banner` and `avatar` images, and edit `snapshot`.
 
 ## Deploying

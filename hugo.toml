@@ -58,6 +58,11 @@ disableKinds = ["taxonomy", "term", "rss"]
 [frontmatter]
   date = ["date", "lastmod", ":fileModTime", ":default"]
 
+# A standalone image should be a block, not wrapped in a <p> — otherwise the
+# render hook's <figure> ends up nested inside a paragraph, which is invalid.
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+
 [markup.goldmark.renderer]
   unsafe = true
 

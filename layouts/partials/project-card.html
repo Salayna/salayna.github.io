@@ -1,14 +1,53 @@
-{{- /* One project card. Expects a Page with project front matter. */ -}}
+{{- /* One project card.
+
+       `card_link` in front matter decides what the card does:
+         page      (default) opens the project's own detail page
+         external  goes straight to `link` — for projects with no write-up
+         none      not clickable at all
+
+       With `none`, the footer icons become real links, so a card that isn't
+       itself clickable can still offer a way through to the site or repo.
+       `external` falls back to the detail page if `link` is missing. */ -}}
+
 {{- $status := .Params.status | default "" -}}
 {{- $live := in (slice "shipped" "live") (lower $status) -}}
-<a class="card" href="{{ .RelPermalink }}"
-   {{ with .Params.accent }}style="--accent: {{ . }}"{{ end }}
-   data-tags="{{ delimit (.Params.tags | default slice) " " }}"
-   data-search="{{ .Title }} {{ .Params.blurb }} {{ delimit (.Params.stack | default slice) " " }} {{ .Params.role }}">
+{{- $mode := .Params.card_link | default "page" -}}
+
+{{- $href := "" -}}
+{{- $isExternal := false -}}
+{{- if and (eq $mode "external") .Params.link -}}
+  {{- $href = .Params.link -}}{{- $isExternal = true -}}
+{{- else if ne $mode "none" -}}
+  {{- $href = .RelPermalink -}}
+{{- end -}}
+
+{{- $style := "" -}}
+{{- with .Params.accent }}{{ $style = printf "--accent: %s" . }}{{ end -}}
+{{- $tags := delimit (.Params.tags | default slice) " " -}}
+{{- $search := printf "%s %s %s %s" .Title (.Params.blurb | default "") (delimit (.Params.stack | default slice) " ") (.Params.role | default "") -}}
+
+{{ if $href }}
+<a class="card" href="{{ $href }}"{{ if $isExternal }} rel="noopener"{{ end }} style="{{ $style | safeCSS }}" data-tags="{{ $tags }}" data-search="{{ $search }}">
+{{ else }}
+<div class="card card--static" style="{{ $style | safeCSS }}" data-tags="{{ $tags }}" data-search="{{ $search }}">
+{{ end }}
+
+  {{- /* Thumbnail, resolved the same way as body images: a `cover.*` or
+         `thumb.*` beside the page, then `image:` as a bundle resource, an
+         asset, or a plain path. Falls back to the initial. */ -}}
+  {{- $thumb := false -}}
+  {{- with .Resources.GetMatch "{cover,thumb}.*" }}{{ $thumb = . }}{{ end -}}
+  {{- with .Params.image -}}
+    {{- with $.Resources.GetMatch . }}{{ $thumb = . }}
+    {{- else }}{{ with resources.Get (strings.TrimPrefix "/" .) }}{{ $thumb = . }}{{ end }}{{ end -}}
+  {{- end -}}
 
   <div class="card__thumb">
-    {{ with .Params.image }}
-      <img src="{{ . | relURL }}" alt="">
+    {{ if $thumb }}
+      {{ $t := $thumb.Fill "640x360 Center" }}
+      <img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="" loading="lazy">
+    {{ else if .Params.image }}
+      <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
     {{ else }}
       <span class="card__glyph" aria-hidden="true">{{ substr .Title 0 1 | upper }}</span>
     {{ end }}
@@ -24,7 +63,7 @@
   </div>
 
   <div class="card__head">
-    <span class="card__title">{{ .Title }}</span>
+    <span class="card__title">{{ .Title }}{{ if $isExternal }}<span class="card__out">{{ partial "icon.html" "external" }}</span>{{ end }}</span>
     {{ with .Params.year }}<span class="card__year">{{ . }}</span>{{ end }}
   </div>
 
@@ -40,10 +79,17 @@
 
       {{ if or .Params.link .Params.repo }}
         <span class="card__links">
-          {{ with .Params.link }}<span title="Live site">{{ partial "icon.html" "globe" }}</span>{{ end }}
-          {{ with .Params.repo }}<span title="Source">{{ partial "icon.html" "github" }}</span>{{ end }}
+          {{/* Real links only when the card itself is not one — no nested anchors. */}}
+          {{ if $href }}
+            {{ with .Params.link }}<span title="Live site">{{ partial "icon.html" "globe" }}</span>{{ end }}
+            {{ with .Params.repo }}<span title="Source">{{ partial "icon.html" "github" }}</span>{{ end }}
+          {{ else }}
+            {{ with .Params.link }}<a href="{{ . }}" rel="noopener" title="Live site" aria-label="Live site">{{ partial "icon.html" "globe" }}</a>{{ end }}
+            {{ with .Params.repo }}<a href="{{ . }}" rel="noopener" title="Source" aria-label="Source">{{ partial "icon.html" "github" }}</a>{{ end }}
+          {{ end }}
         </span>
       {{ end }}
     </div>
   {{ end }}
-</a>
+
+{{ if $href }}</a>{{ else }}</div>{{ end }}
