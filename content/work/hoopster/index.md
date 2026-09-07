@@ -31,3 +31,6 @@ the part that usually kills pickup sports apps — getting people to actually tu
 The hard problem isn't the map, it's the hour before tip-off. Most no-shows happen
 when nobody has confirmed and everyone assumes it's dead. Restructuring the session
 around three moments — open, confirm, recap — did more for turnout than any feature.
+
+
+This is a placeholder you curious one
