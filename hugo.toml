@@ -14,7 +14,7 @@ disableKinds = ["taxonomy", "term", "rss"]
   description = "Flutter developer in Lille. I build and ship mobile products end to end."
   email       = "hello@example.com"
   # Shows the "Open to new work" status in the hero.
-  available   = true
+  available   = false
 
   # Four short lines for the snapshot card on the home page.
   snapshot = [
