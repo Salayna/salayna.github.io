@@ -9,24 +9,24 @@ disableKinds = ["taxonomy", "term", "rss"]
 
 [params]
   name        = "Salayna"
-  role        = "Flutter developer"
+  role        = "Mobile Engineer"
   location    = "Lille, France"
-  description = "Flutter developer in Lille. I build and ship mobile products end to end."
-  email       = "hello@example.com"
+  description = "Mobile Engineer in Lille. I build and ship mobile products end to end."
+  email       = "dev.salayna@gmail.com"
   # Shows the "Open to new work" status in the hero.
   available   = false
 
   # Four short lines for the snapshot card on the home page.
   snapshot = [
-    "Shipping Flutter apps.",
-    "Designing as I build.",
+    "Shipping Mobile apps.",
     "Backend when it's needed.",
     "Allergic to half-done.",
+    "Always learning new things"
   ]
 
 [[params.social]]
   name = "GitHub"
-  url  = "https://github.com/"
+  url  = "https://github.com/Salayna"
 
 [[params.social]]
   name = "LinkedIn"
@@ -34,7 +34,7 @@ disableKinds = ["taxonomy", "term", "rss"]
 
 [[params.social]]
   name = "Email"
-  url  = "mailto:hello@example.com"
+  url  = "mailto:dev.salayna@gmail.com"
 
 [menus]
   [[menus.main]]
