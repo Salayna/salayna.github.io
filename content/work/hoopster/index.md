@@ -1,8 +1,7 @@
 ---
 title: "Hoopster"
-weight: 1
+weight: 2
 year: "2025 — now"
-featured: true
 status: "In beta"
 role: "Solo — design, app, backend"
 blurb: "Find a pickup basketball game near you. Courts, sessions, RSVPs and a check-in that actually gets used."

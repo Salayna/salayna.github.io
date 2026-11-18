@@ -45,7 +45,9 @@
   <div class="card__thumb">
     {{ if $thumb }}
       {{ $t := $thumb.Fill "640x360 Center" }}
-      <img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="" loading="lazy">
+      {{ $dark := .Resources.GetMatch "cover-dark.*" }}
+      <img{{ if $dark }} class="card__img--light"{{ end }} src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="" loading="lazy">
+      {{ with $dark }}{{ $d := .Fill "640x360 Center" }}<img class="card__img--dark" src="{{ $d.RelPermalink }}" width="{{ $d.Width }}" height="{{ $d.Height }}" alt="" loading="lazy">{{ end }}
     {{ else if .Params.image }}
       <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
     {{ else }}

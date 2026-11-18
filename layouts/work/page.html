@@ -19,6 +19,20 @@
     {{ end }}
   </header>
 
+  {{ with .Resources.Match "screens/*" }}
+    <section class="container">
+      <div class="shots">
+      {{ range . }}
+        {{ $i := .Resize "480x q85" }}
+        <figure class="shot">
+          <img src="{{ $i.RelPermalink }}" width="{{ $i.Width }}" height="{{ $i.Height }}" alt="{{ .Title }} screen" loading="lazy">
+          <figcaption>{{ .Title }}</figcaption>
+        </figure>
+      {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
   <section class="section container">
     <div class="prose">{{ .Content }}</div>
 

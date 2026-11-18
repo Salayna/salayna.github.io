@@ -876,6 +876,34 @@ img { height: auto; display: block; }
   border-radius: 2px;
 }
 
+/* Phone screens on a project page: four across, two on small screens. */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: var(--gap);
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--accent, var(--ink-3)) 10%, var(--surface));
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+}
+.shot img { width: 100%; height: auto; }
+.shot figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+@media (max-width: 720px) {
+  .shots { grid-template-columns: repeat(2, 1fr); padding: 1rem; }
+}
+
+/* A card with a dark cover swaps images with the theme. */
+.card__img--dark { display: none; }
+[data-theme="dark"] .card__img--dark { display: block; }
+[data-theme="dark"] .card__img--light { display: none; }
+
 .prose { max-width: 66ch; }
 .prose > * + * { margin-top: 1.15em; }
 .prose h2 {
