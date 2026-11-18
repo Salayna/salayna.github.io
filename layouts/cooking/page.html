@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article>
+  <header class="page-head container">
+    <h1 class="display" style="font-size: var(--step-3)">{{ .Title }}</h1>
+    {{ with .Params.summary }}<div class="lede"><p>{{ . }}</p></div>{{ end }}
+    <p class="page-head__meta">
+      {{ with .Params.tags }}<span>{{ humanize (index . 0) }}</span>{{ end }}
+      {{ if not .Date.IsZero }}<span>{{ .Date.Format "2 January 2006" }}</span>{{ end }}
+      {{ with .Params.time }}<span>{{ . }}</span>{{ end }}
+      {{ with .Params.serves }}<span>Serves {{ . }}</span>{{ end }}
+    </p>
+  </header>
+  <section class="section container">
+    {{ with .Resources.GetMatch "cover.*" }}
+      {{ $i := .Resize "1400x q85" }}
+      <figure class="fig"><img src="{{ $i.RelPermalink }}" width="{{ $i.Width }}" height="{{ $i.Height }}" alt="{{ $.Title }}" decoding="async"></figure>
+    {{ end }}
+    <div class="prose">{{ .Content }}</div>
+  </section>
+</article>
+{{ end }}

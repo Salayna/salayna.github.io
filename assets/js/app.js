@@ -27,6 +27,7 @@
   var items  = Array.prototype.slice.call(document.querySelectorAll('[data-tags]'));
   var empty  = document.querySelector('[data-filter-empty]');
   var active = 'all';
+  var noun = root.dataset.noun || 'project';
 
   function apply() {
     var q = (search ? search.value : '').trim().toLowerCase();
@@ -42,7 +43,7 @@
       if (show) shown++;
     });
 
-    if (count) count.textContent = shown + (shown === 1 ? ' project' : ' projects');
+    if (count) count.textContent = shown + (shown === 1 ? ' ' + noun : ' ' + noun + 's');
     if (empty) empty.hidden = shown !== 0;
   }
 

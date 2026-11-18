@@ -827,6 +827,8 @@ img { height: auto; display: block; }
   padding-top: 0.28rem;
 }
 .post-row__title { font-weight: 600; }
+.post-row[hidden] { display: none; }
+.post-row__kind { margin-left: 0.75rem; color: var(--ink-3); }
 .post-row__summary { margin: 0.15rem 0 0; color: var(--ink-2); max-width: 60ch; }
 
 /* ==========================================================================

@@ -88,4 +88,22 @@
   </section>
 {{ end }}
 
+{{ with first 4 (where site.RegularPages "Section" "cooking").ByDate.Reverse }}
+  {{ partial "band.html" (dict "title" "Cooking" "id" "cooking" "more" "All posts →" "href" "/cooking/") }}
+  <section class="section container">
+    <div class="posts">
+      {{ range . }}
+        <a class="post-row" href="{{ .RelPermalink }}">
+          <span class="post-row__date">{{ if not .Date.IsZero }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+          <div>
+            <span class="post-row__title">{{ .Title }}</span>
+            {{ with .Params.tags }}<span class="label post-row__kind">{{ index . 0 }}</span>{{ end }}
+            {{ with .Params.summary }}<p class="post-row__summary">{{ . }}</p>{{ end }}
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
 {{ end }}

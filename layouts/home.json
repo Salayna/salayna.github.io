@@ -20,6 +20,16 @@
   ) -}}
 {{- end -}}
 
+{{- range where site.RegularPages "Section" "cooking" -}}
+  {{- $index = $index | append (dict
+      "title"   .Title
+      "url"     .RelPermalink
+      "kind"    "Cooking"
+      "summary" (.Params.summary | default "" | plainify)
+      "tags"    (.Params.tags | default slice)
+  ) -}}
+{{- end -}}
+
 {{- range site.Sections -}}
   {{- $index = $index | append (dict
       "title"   .Title
